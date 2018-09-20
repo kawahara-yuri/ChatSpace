@@ -1,1 +1,181 @@
 @import "./reset";
+@import "font-awesome";
+
+$cyan: #434A54;
+$white: #ffffff;
+$gray: #999999;
+$light_gray: #B8C3C7;
+$dark_gray: #333333;
+$light_blue: #38AEF0;
+
+.chat-side {
+  height: 100vh;
+  width: 300px;
+  float: left;
+  &__user {
+    height: 15%;
+    width: 100%;
+    background-color: #253141;
+    position: relative;
+    border-bottom: 1px solid #eee;
+    &-content {
+      height: 50px;
+      width: 100%;
+      line-height: 50px;
+      margin: auto 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+    &-name {
+      color: $white;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0 20px;
+      position: relative;
+      display: inline-block;
+    }
+    &--new-group {
+      color: $white;
+      position: relative;
+      display: inline-block;
+      margin-left: 130px;
+    }
+    &--edit-user {
+      color: $white;
+      position: relative;
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+  &__groups {
+    height: 85%;
+    width: 100%;
+    background-color: #2f3e51;
+    &-list {
+      height: 100%;
+      color: $white;
+    }
+  }
+  &__group {
+    padding: 20px;
+    &-name {
+      font-size: 15px;
+    }
+    &-message {
+      font-size: 11px;
+    }
+  }
+}
+
+.chat-main {
+  height: 100vh;
+  width: calc(100vw - 300px);
+  float: left;
+  &__header {
+    height: 15%;
+    border-bottom: 1px solid #eee;
+    &--group {
+      margin: 0 40px;
+      &-name {
+        color: $dark_gray;
+        font-size: 20px;
+        margin: 35px 0 15px;
+        float: left;
+      }
+      &-edit-btn {
+        color: $light_blue;
+        font-size: 15px;
+        padding: 12.5px 20px;
+        margin: 28px 20px 0;
+        border: 1px solid $light_blue;
+        float: right;
+      }
+    }
+    &-members {
+      color: $gray;
+      font-size: 12px;
+      margin: 0 40px;
+    }
+  }
+  &__body {
+    height: calc(100vh - 15% - 90px);
+    overflow-y: scroll;
+    background-color: #eee;
+    &--messages-list {
+      padding-top: 26px;
+      padding-left: 40px;
+    }
+  }
+  &__message {
+    padding: 20px 0;
+    &-name {
+      color: $cyan;
+      font-size: 16px;
+      font-weight: bold;
+      float: left;
+    }
+    &-time {
+      color: $gray;
+      font-size: 12px;
+      padding: 0 10px 10px;
+      float: left;
+    }
+    &-body {
+      color: $cyan;
+      font-size: 14px;
+      clear: both;
+    }
+  }
+  &__footer {
+    height: 90px;
+    width: 100%;
+    background-color: $light_gray;
+    &-form {
+      margin: 0 40px;
+      position: relative;
+    }
+    &-body {
+      position: relative;
+      .message {
+        height: 50px;
+        width: calc( 100% - 130px );
+        padding: 0 10px;
+        margin: 20px 0;
+        border: none;
+      }
+      .chat-file {
+        height: 50px;
+        width: 40px;
+        margin: 32px 130px 20px 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        .image {
+          position: absolute;
+          top: 15px;
+          left: 15px;
+          display: none;
+        }
+      }
+    }
+    .submit {
+      color: $white;
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      background-color: $light_blue;
+      margin: 20px 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+    }
+  }
+}
+
+.clearfix:after {
+  clear: both;
+  content: '';
+  display: block;
+}
