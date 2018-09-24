@@ -1,16 +1,8 @@
 .chat-side__groups-list
   .chat-side__group
-    .chat-side__group-name
-      group-name
-    .chat-side__group-message
-      message
-  .chat-side__group
-    .chat-side__group-name
-      group-name2
-    .chat-side__group-message
-      message2
-  .chat-side__group
-    .chat-side__group-name
-      group-name3
-    .chat-side__group-message
-      message3
+    - current_user.groups.each do |group|
+      = link_to group_message_path(group) do
+        .chat-side__group-name
+          = group.name
+        .chat-side__group-message
+          メッセージはまだありません。
