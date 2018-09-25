@@ -17,4 +17,5 @@
 .byebug_history
 
 public/uploads/*
+public/*
 app/assets/stylesheets/_reset.scss
