@@ -1,20 +1,29 @@
 = render "groups/groups"
+
 .chat-main
   .chat-main__header
     .chat-main__header--group.clearfix
       .chat-main__header--group-name
-        group name
+        = @group.name
       = link_to "Edit", 'edit_group_path', class: "chat-main__header--group-edit-btn"
     .chat-main__header-members
       MEMBER:
-      %i member
+      %i
+        - @members.each do |member|
+          = member
+
   .chat-main__body
-    = render "message"
+    = render @messages
+
   .chat-main__footer
-    %form{class: "chat-main__footer-form"}
-      .chat-main__footer-body
-        %input{placeholder: "type a message", class: "message", type: "text", name: "message_body", id: "message_body"}
-        %label{class: "chat-file", for: "message_image"}
-          %input{class: "image", type: "file", name: "message_image", id: "message_image"}
-          = fa_icon 'image'
-      %input{type: "submit", name: "commit", value: "Send", class: "submit"}
+    .chat-main__footer-form
+      = form_for [@group, @message] do |f|
+        .chat-main__footer-body
+          = f.text_field :content, class: 'message', placeholder: 'type a message'
+          = f.label :image, class: 'chat-file' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'image'
+          = f.submit 'Send', class: 'submit'
+
+
+
