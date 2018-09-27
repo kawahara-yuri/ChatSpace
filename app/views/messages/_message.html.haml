@@ -1,16 +1,11 @@
 .chat-main__body--messages-list
   .chat-main__message.clearfix
     .chat-main__message-name
-      name
+      = message.user.name
     .chat-main__message-time
-      2018/09/20 11:10:02
+      = format_posted_time(message.created_at)
     .chat-main__message-body
-      message
-
-  .chat-main__message.clearfix
-    .chat-main__message-name
-      name2
-    .chat-main__message-time
-      2018/03/04 16:27:32
-    .chat-main__message-body
-      message2
+      - if message.content.present?
+        %p.lower-message__content
+          = message.content
+      = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
