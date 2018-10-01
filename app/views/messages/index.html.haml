@@ -15,15 +15,14 @@
   .chat-main__body
     = render @messages
 
-  .chat-main__footer
-    .chat-main__footer-form
-      = form_for [@group, @message] do |f|
-        .chat-main__footer-body
-          = f.text_field :content, class: 'message', placeholder: 'type a message'
-          = f.label :image, class: 'chat-file' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'image'
-          = f.submit 'Send', class: 'submit'
+  .chat-main__form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'message', placeholder: 'type a message'
+      .chat-main__form-mask
+        = f.label :image, class: 'chat-file' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'image'
+      = f.submit 'Send', class: 'submit'
 
 
 

@@ -58,36 +58,33 @@
       clear: both;
     }
   }
-  &__footer {
+  &__form {
+    background-color: #DDDDDD;
+    box-sizing: border-box;
     height: 90px;
-    width: 100%;
-    background-color: $light_gray;
-    &-form {
-      margin: 0 40px;
-      position: relative;
+    padding: 20px 50px 20px 40px;
+    position: relative;
+    .message {
+      height: 50px;
+      width: calc( 100% - 150px );
+      padding: 0 10px;
+      float: left;
+      border: none;
     }
-    &-body {
-      position: relative;
-      .message {
-        height: 50px;
-        width: calc( 100% - 130px );
-        padding: 0 10px;
-        margin: 20px 0;
-        border: none;
-      }
+    &-mask {
+      background-color: $white;
+      float: left;
+      height: 50px;
+      padding-right: 10px;
       .chat-file {
-        height: 50px;
-        width: 40px;
-        margin: 32px 130px 20px 0;
+        font-size: 20px;
+        line-height: 50px;
+      }
+      .image {
         position: absolute;
-        top: 0;
-        right: 0;
-        .image {
-          position: absolute;
-          top: 15px;
-          left: 15px;
-          display: none;
-        }
+        top: 15px;
+        left: 15px;
+        display: none;
       }
     }
     .submit {
@@ -96,7 +93,7 @@
       height: 50px;
       text-align: center;
       background-color: $light_blue;
-      margin: 20px 0;
+      margin: 20px 20px;
       position: absolute;
       top: 0;
       right: 0;
@@ -104,3 +101,4 @@
     }
   }
 }
+
