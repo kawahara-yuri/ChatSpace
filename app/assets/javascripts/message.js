@@ -1,52 +1,30 @@
 $(function(){
   function buildHTML(message){
-    var html;
+    var input;
     if (message.content != null && message.image_url != null) {
-      html = `<div class="chat-main__body--messages-list">
-                    <div class="chat-main__message.clearfix">
-                      <div class="chat-main__message-name">
-                        ${message.user_name}
-                      </div>
-                      <div class="chat-main__message-time">
-                        ${message.time}
-                      </div>
-                      <div class="chat-main__message-body">
-                        <p class="lower-message__content">
-                            ${message.content}</p>
-                        <img src ="${message.image_url}" width="300" height="300", class: 'lower-message__image' >
-                      </div>
-                    </div>
-                  </div>`;
+      body =  `<p class="lower-message__content">
+                  ${message.content}</p>
+                <img src ="${message.image_url}" width="300" height="300", class: 'lower-message__image' >`;
     } else if (message.image_url == null) {
-      html = `<div class="chat-main__body--messages-list">
-                    <div class="chat-main__message.clearfix">
-                      <div class="chat-main__message-name">
-                        ${message.user_name}
-                      </div>
-                      <div class="chat-main__message-time">
-                        ${message.time}
-                      </div>
-                      <div class="chat-main__message-body">
-                        <p class="lower-message__content">
-                            ${message.content}</p>
-                      </div>
-                    </div>
-                  </div>`;
+      body =  `<p class="lower-message__content">
+                  ${message.content}</p>`;
     } else if (message.content == null) {
-      html = `<div class="chat-main__body--messages-list">
-                    <div class="chat-main__message.clearfix">
-                      <div class="chat-main__message-name">
-                        ${message.user_name}
-                      </div>
-                      <div class="chat-main__message-time">
-                        ${message.time}
-                      </div>
-                      <div class="chat-main__message-body">
-                        <img src ="${message.image_url}" width="250" height="250", class: 'lower-message__image' >
-                      </div>
-                    </div>
-                  </div>`;
+      body = `<img src ="${message.image_url}" width="250" height="250", class: 'lower-message__image' >`;
     }
+
+    var html = `<div class="chat-main__body--messages-list">
+                  <div class="chat-main__message.clearfix">
+                    <div class="chat-main__message-name">
+                      ${message.user_name}
+                    </div>
+                    <div class="chat-main__message-time">
+                      ${message.time}
+                    </div>
+                    <div class="chat-main__message-body">
+                      ${body}
+                    </div>
+                  </div>
+                </div>`;
     return html;
   }
   $('.new_message').on('submit', function(e){
