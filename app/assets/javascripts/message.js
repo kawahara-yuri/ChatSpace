@@ -45,11 +45,12 @@ $(function(){
       $('.message').val('');
       $('.image').val('');
       $('.chat-main__body').animate({scrollTop: 999999}, 500, 'swing');
-      $(".submit").prop("disabled", false);
     })
     .fail(function(){
       alert('error');
+    })
+    .always(function(){
       $(".submit").prop("disabled", false);
-    });
+    })
   });
 });
