@@ -1,4 +1,5 @@
 $(function(){
+  var id_max = 1;
   function buildHTML(message){
     var input;
     if (message.content != null && message.image_url != null) {
@@ -45,6 +46,7 @@ $(function(){
       $('.message').val('');
       $('.image').val('');
       $('.chat-main__body').animate({scrollTop: 999999}, 500, 'swing');
+      id_max = data.id;
     })
     .fail(function(){
       alert('error');
@@ -53,4 +55,36 @@ $(function(){
       $(".submit").prop("disabled", false);
     })
   });
+
+
+  var interval = setInterval(function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+      $.ajax({
+        url: window.location.href,
+        dataType: 'json'
+      })
+      .done(function(data) {
+        $('.chat-main__body--messages-list').each(function() {
+          var id_comp = $(this).data('messageId');
+          if(id_max <=  id_comp) {
+            id_max = id_comp;
+          }
+        });
+        var insertHTML = '';
+        data.messages.forEach(function(message) {
+          if (message.id > id_max ) {
+            insertHTML += buildHTML(message);
+            $('.chat-main__body').append(insertHTML);
+            $('.chat-main__body').animate({scrollTop: 999999}, 500, 'swing');
+            id_max = message.id;
+          }
+        });
+      })
+      .fail(function(data) {
+        alert('自動更新に失敗しました');
+      });
+    } else {
+      clearInterval(interval);
+    };
+  }, 5000 );
 });
