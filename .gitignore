@@ -16,6 +16,6 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-public/uploads/*
-public/*
+# public/uploads/*
+# public/*
 app/assets/stylesheets/_reset.scss
