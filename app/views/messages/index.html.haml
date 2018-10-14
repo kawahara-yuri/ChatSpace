@@ -5,7 +5,7 @@
     .chat-main__header--group.clearfix
       .chat-main__header--group-name
         = @group.name
-      = link_to "Edit", 'edit_group_path', class: "chat-main__header--group-edit-btn"
+      = link_to "Edit", edit_group_path(@group.id), class: "chat-main__header--group-edit-btn"
     .chat-main__header-members
       MEMBER:
       %i
